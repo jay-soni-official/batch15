@@ -15,7 +15,7 @@ resource "aws_instance" "myinstance" {
   key_name = var.key_name
   availability_zone = "us-east-1a"
   tags = {
-    name = "myinstance"
+    name = "myinstance1"
   }
 } 
 
@@ -27,4 +27,8 @@ variable "instance_type" {
 }
 variable "key_name" {
   default = "id_rsa"
+}
+
+output "instance_id" {
+  value = 
 }
