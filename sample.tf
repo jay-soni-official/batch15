@@ -26,7 +26,6 @@ resource "aws_instance" "myinstance" {
   instance_type = var.instance_type
   vpc_security_group_ids = [ data.aws_security_groups.mysg.id ]
   key_name = var.key_name
-  availability_zone = "us-east-1a"
   tags = {
     name = local.instance_name
   }
