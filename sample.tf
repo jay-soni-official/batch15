@@ -14,7 +14,7 @@ provider "aws" {
 data "aws_security_groups" "mysg" {
   filter {
     name   = "vpc-id"
-    values = var.vpc_id
+    values =[var.vpc_id]
   }
   filter {
     name   = "group-name"
