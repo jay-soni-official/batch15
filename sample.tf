@@ -11,17 +11,6 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
-resource "aws_instance" "myinstance" {
-  ami = var.ami_id
-  instance_type = var.instance_type
-  vpc_security_group_ids = ["sg-0f7b2e9cf35734448"]
-  key_name = var.key_name
-  availability_zone = "us-east-1a"
-  tags = {
-    name = local.instance_name
-  }
-} 
-
 data "aws_security_groups" "mysg" {
   filter {
     name   = "vpc-id"
@@ -32,7 +21,16 @@ data "aws_security_groups" "mysg" {
     values = ["mysg"]
   }
 }
-
+resource "aws_instance" "myinstance" {
+  ami = var.ami_id
+  instance_type = var.instance_type
+  vpc_security_group_ids = data.aws_security_groups.mysg.id
+  key_name = var.key_name
+  availability_zone = "us-east-1a"
+  tags = {
+    name = local.instance_name
+  }
+} 
 
 variable "ami_id" {
   default = "ami-0c398cb65a93047f2"
