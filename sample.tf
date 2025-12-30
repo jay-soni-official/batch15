@@ -11,7 +11,7 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
-data "aws_security_groups" "mysg" {
+data "aws_security_group" "mysg" {
   filter {
     name   = "vpc-id"
     values =[var.vpc_id]
@@ -24,10 +24,10 @@ data "aws_security_groups" "mysg" {
 resource "aws_instance" "myinstance" {
   ami = var.ami_id
   instance_type = var.instance_type
-  vpc_security_group_ids = ["sg-034c5124a9dc1e0d7"]
+  vpc_security_group_ids = [data.aws_security_group.mysg.id]
   key_name = var.key_name
   tags = {
-    name = local.instance_name
+    Name = local.instance_name
   }
 } 
 
