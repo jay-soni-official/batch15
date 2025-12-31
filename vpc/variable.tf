@@ -11,10 +11,10 @@ variable "pub-cidr" {
   default = "10.0.1.0/24"
 }
 variable "pvt-az"{
-    default = "ap-south-1a"
+    default = "us-east-1a"
 }
 variable "pub-az"{
-    default = "ap-south-1b"
+    default = "us-east-1b"
 }
 variable "project" {
   default = "cloud"
