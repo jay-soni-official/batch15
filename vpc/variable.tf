@@ -32,14 +32,14 @@ variable "key_pair" {
 variable "pvt-tags" {
   type = map
   default = {
-    name = "pvt-instance"
+    Name = "pvt-instance"
     env = "terraform-practice"
   }
 }
 variable "pub-tags" {
   type = map
   default = {
-    name = "pub-instance"
+    Name = "pub-instance"
     env = "terraform-practice"
   }
 }
